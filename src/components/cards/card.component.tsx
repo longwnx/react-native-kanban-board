@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, {Component, useMemo} from 'react'
 import {
   TouchableOpacity,
   StyleProp,
@@ -50,9 +50,9 @@ export type CardExternalProps = {
 
 type Props = CardExternalProps &
   KanbanContext & {
-    model: CardModel;
-    hidden: boolean;
-  };
+  model: CardModel;
+  hidden: boolean;
+};
 
 class Card extends Component<Props> {
   onPress = () => {
@@ -111,13 +111,9 @@ export default withKanbanContext(Card);
 
 const styles = StyleSheet.create({
   container: {
-    borderColor: '#E3E3E3',
-    borderWidth: 1,
     borderRadius: 8,
-    padding: 16,
     backgroundColor: '#FFFFFF',
     marginBottom: 16,
-    elevation: 3
   },
   cardHeaderContainer: {
     marginBottom: 16

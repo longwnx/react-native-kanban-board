@@ -8,7 +8,7 @@ export default class EmptyColumn extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.textStyle}>{'Empty'}</Text>
+        {/*<Text style={styles.textStyle}>{'Empty'}</Text>*/}
       </View>
     )
   }

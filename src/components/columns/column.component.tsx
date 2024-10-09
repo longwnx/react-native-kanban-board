@@ -175,7 +175,10 @@ export class Column extends React.Component<Props, State> {
             marginRight: singleDataColumnAvailable ? 0 : COLUMN_MARGIN
           }]}>
         <View style={[styles.columnHeaderContainer, columnHeaderContainerStyle]}>
-          <Text style={[styles.columnHeaderTitle, columnHeaderTitleStyle]}>{column.title}</Text>
+          <View style={styles.row}>
+            <View style={[styles.dotHeaderLine, {backgroundColor: column.color}]} />
+            <Text style={[styles.columnHeaderTitle, columnHeaderTitleStyle]}>{column.title} {`(${noOfItems})`}</Text>
+          </View>
           {isWithCountBadge &&
             <View style={styles.columnHeaderRightContainer}>
               <Badge value={noOfItems} />
@@ -193,7 +196,7 @@ export default Column;
 
 const styles = StyleSheet.create({
   columnContainer: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#EBECF0',
     borderRadius: 8,
     padding: 8
   },
@@ -208,4 +211,17 @@ const styles = StyleSheet.create({
   },
   columnHeaderRightContainer: {
   },
+  dotHeaderLine: {
+    width: 10,
+    height: 10,
+    backgroundColor: '#aa1c1c',
+    borderRadius: 20,
+    marginRight: 8
+  },
+  row:{
+    flexDirection: 'row',
+    justifyContent:'center',
+    alignItems:'center'
+  }
 });
+

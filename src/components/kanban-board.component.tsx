@@ -480,7 +480,7 @@ class KanbanBoard extends React.Component<Props, State> {
       dragRotate: rotate,
       startingX,
       startingY } = this.state;
-    const { 
+    const {
       renderCardContent,
       cardContainerStyle,
       cardTitleTextStyle,
@@ -564,7 +564,7 @@ class KanbanBoard extends React.Component<Props, State> {
         boardState={boardState}
         column={columnModel}
         renderCardItem={this.renderCard}
-        isWithCountBadge={true}
+        isWithCountBadge={false}
         movingMode={movingMode}
         singleDataColumnAvailable={singleDataColumnAvailable}
         renderEmptyColumn={renderEmptyColumn}

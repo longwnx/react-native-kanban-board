@@ -2,7 +2,7 @@ import React, { Component, RefObject } from 'react';
 import {
   NativeScrollEvent,
   NativeSyntheticEvent,
-  Platform,
+  Platform, SafeAreaView,
   ScrollView,
   StyleSheet,
   View
@@ -148,11 +148,12 @@ export class ColumnSnapContainer extends Component<Props, State> {
             {data.map((_, index) => (
               <Dot
                 key={`carousel-pos-indicator-${index}`}
-                color={oneColumnActiveItemIndex === index ? '#000000' : '#DDDDDD'}
+                color={oneColumnActiveItemIndex === index ? '#005C9A' : '#DDDDDD'}
                 style={styles.positionIndicator}
               />
             ))}
           </View>}
+
       </View>
     );
   }
@@ -163,12 +164,14 @@ export default ColumnSnapContainer;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingHorizontal: 8
   },
   scrollContainer: {
     flexDirection: 'row',
   },
   contentContainer: {
-    paddingVertical: 8,
+    paddingBottom: 48,
+
   },
   positionIndicatorContainer: {
     flexDirection: 'row',

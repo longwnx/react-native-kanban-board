@@ -7,7 +7,7 @@ A kanban board for React Native.
 ## Installation
 
 ```sh
-npm install @intechnity/react-native-kanban-board
+npm install @longwnx/react-native-kanban-board
 ```
 
 react-native-gesture-handler must be also installed: https://www.npmjs.com/package/react-native-gesture-handler
@@ -22,32 +22,93 @@ import { KanbanBoard, ColumnModel, CardModel } from '@intechnity/react-native-ka
 
 Define the columns and cards:
 
+
+
+```tsx
+const data = [
+  {
+    "imgLinks": [],
+    "iconName": [],
+    "code": "CV0327",
+    "name": "Test 4",
+    "status": 2,
+    "startDate": "2024-10-03T00:00:00",
+    "endDate": "2024-10-31T00:00:00",
+    "creationTime": "2024-10-03T09:09:15.061836",
+    "id": 333
+  },
+  {
+    "imgLinks": [],
+    "iconName": [],
+    "code": "CV0327",
+    "name": "Test 3",
+    "status": 2,
+    "startDate": "2024-10-03T00:00:00",
+    "endDate": "2024-10-31T00:00:00",
+    "creationTime": "2024-10-03T09:09:15.061836",
+    "id": 331
+  },
+  {
+    "imgLinks": [
+    ],
+    "iconName": [],
+    "code": "CV0327",
+    "name": "Test 2",
+    "status": 2,
+    "startDate": "2024-10-03T00:00:00",
+    "endDate": "2024-10-31T00:00:00",
+    "creationTime": "2024-10-03T09:09:15.061836",
+    "id": 329
+  },
+  {
+    "imgLinks": [
+    ],
+    "iconName": [],
+    "code": "CV0327",
+    "name": "Test 1",
+    "status": 2,
+    "startDate": "2024-10-03T00:00:00",
+    "endDate": "2024-10-31T00:00:00",
+    "creationTime": "2024-10-03T09:09:15.061836",
+    "id": 327
+  },
+];
+```
+
 ```tsx
 const columns = [
-  new ColumnModel("new", "New", 1),
+  new ColumnModel("statusTodo", "Todo", 1),
   new ColumnModel("inProgress", "In Progress", 2),
   new ColumnModel("ready", "Ready", 3),
 ];
 
-const cards = [
-  new CardModel(
-    "card1",
-    "new",
-    "1st Card",
-    "Example card",
-    "test description",
-    [
-      {
-        text: "Tag1",
-        backgroundColor: "#00FF00",
-        textColor: "#000000"
-      }
-    ],
-    null,
+const convertStatus = (status: number) => {
+  switch (status) {
+    case 0:
+      return 'statusTodo';
+    case 1:
+      return 'inProgress';
+    case 2:
+      return 'ready';
+    default:
+      return 'statusTodo';
+  }
+};
+
+const cards = works.list.map((item: WorkAssign) => {
+  return new CardModel(
+    item.id,
+    convertStatus(item.status),
+    item?.code,
+    item?.priorityType,
+    item?.name,
+    '',
+    '',
+    [],
+    item,
     1
-  ),
-  // ... add more cards ...
-];
+  );
+}, []);
 
 ```
 
@@ -72,6 +133,19 @@ Render the Kanban Board component:
   cards={cards}
   onDragEnd={onCardDragEnd}
   onCardPress={onCardPress}
+/>
+
+```
+Or
+
+```tsx
+<KanbanBoard
+  columns={columns}
+  cards={cards}
+  onDragEnd={onCardDragEnd}
+  style={{flex: 1}}
+  columnHeaderTitleStyle={{fontWeight: '600', fontSize: 16}}
+  renderCardContent={renderCardContent}
 />
 
 ```

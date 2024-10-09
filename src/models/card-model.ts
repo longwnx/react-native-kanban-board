@@ -12,6 +12,8 @@ export class CardModel {
 
   id: string | undefined;
   columnId: string;
+  code: string | undefined;
+  priorityType: number | undefined;
   title: string;
   subtitle: string;
   description: string | undefined;
@@ -47,6 +49,8 @@ export class CardModel {
    * Creates a new CardModel instance.
    * @param {string | undefined} id - The ID of the card.
    * @param {string} columnId - The ID of the column the card belongs to.
+   * @param code
+   * @param priorityType
    * @param {string} title - The title of the card.
    * @param {string} subtitle - The subtitle of the card.
    * @param {string | undefined} description - The description of the card (optional).
@@ -55,16 +59,20 @@ export class CardModel {
    * @param {number} sortOrder - The sort order of the card within its column.
    */
   constructor(id: string | undefined,
-    columnId: string,
-    title: string,
-    subtitle: string,
-    description: string | undefined,
-    tags: Tag[],
-    item: any,
-    sortOrder: number) {
+              columnId: string,
+              code: string | undefined,
+              priorityType: number | undefined,
+              title: string,
+              subtitle: string,
+              description: string | undefined,
+              tags: Tag[],
+              item: any,
+              sortOrder: number) {
 
     this.id = id;
     this.columnId = columnId;
+    this.code = code;
+    this.priorityType = priorityType;
     this.title = title;
     this.subtitle = subtitle;
     this.description = description;
